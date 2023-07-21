@@ -57,12 +57,42 @@ type of schema :
           message: props => `${props.value} is not a valid phone number!`
         },
 
-5.unique :boolean
-6.lowercase
-7.uppercase
-8.trim
-9.match
+#### 5.unique :boolean
+#### 6.lowercase
+#### 7.uppercase
+####  8.trim
+#### 9.match: /^[a-zA-Z0-9_-]{3,20}$/
+#### 10.  enum:
+     {
+      values: ['Coffee', 'Tea'],
+      message: '{VALUE} is not supported'
+    }
 
+
+#### 11 minLength,  maxlength 
+
+   maxlength: 20 //min string and max string
+
+date :
+
+         dateField: {
+            type: Date,
+            validate: [
+              {
+                validator: function (value) {
+                  // 'this' refers to the current document being validated
+                  return value >= this.min; // Check if value is greater than or equal to the 'min' property of the document
+                },
+                message: 'Date is less than the minimum allowed value.',
+              },
+              {
+                validator: function (value) {
+                  return value <= this.max; // Check if value is less than or equal to the 'max' property of the document
+                },
+                message: 'Date exceeds the maximum allowed value.',
+              },
+            ],
+          },
     
 
 
