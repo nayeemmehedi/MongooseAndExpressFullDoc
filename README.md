@@ -1,35 +1,20 @@
-### Doc start here : 
-
-install :
-    npm init -y
-    npm install express cors nodemon 
-
-starting code :
-
-                  const express = require("express");
-                  const cors = require("cors");
-                  const mongoose = require("mongoose");
-                 
-                 
+### Mongodb operator
 
 
-                  const app = express();
-                  app.use(cors());
-                  app.use(express.json());
-                
+$eq -eqal
+$ne
 
+$gt
+$gte
 
-                  mongoose.set("strictQuery", true);
+$in - [inside array ]
+$nin
 
-                  mongoose
-                    .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                    .then(() => console.log("db conntected.."));
+$lt
+$lte
 
+$and
+$or'
+$nor
+$not
 
-
-               app.get('/', (req, res) => {
-                res.send('Hello World!')
-              })
-
-              
-     app.listen(3000);
