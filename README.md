@@ -1,5 +1,27 @@
 ### schema doc 
 
+### basic example
+
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
+
+const homeSchema = new Schema({
+  fist_name: String, 
+  comments: [{ body: String, date: Date }],
+  date: { type: Date, default: Date.now },
+  hidden: Boolean,
+  meta: {
+    votes: Number,
+    favs: Number
+  },
+  email: String
+});
+
+const home =  mongoose.model('Blog', homeSchema);
+
+ module.exports.homeSchemaValue = home
+
 
 type of schema : 
 
