@@ -83,7 +83,22 @@ type of schema :
 #### 6.lowercase
 #### 7.uppercase
 ####  8.trim
+
 #### 9.match: /^[a-zA-Z0-9_-]{3,20}$/
+example 
+
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, // Regular expression to match a valid email address
+            validate: {
+              validator: function (value) {
+                return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
+              },
+              message: 'Please provide a valid email address',
+            },
+          },
 #### 10.  enum:
      {
       values: ['Coffee', 'Tea'],
