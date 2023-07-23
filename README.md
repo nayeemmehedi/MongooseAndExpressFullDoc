@@ -140,15 +140,24 @@ example
             },
           },
 #### 10.  enum:
+1way:
      {
       values: ['Coffee', 'Tea'],
       message: '{VALUE} is not supported'
     }
 
+2way:
+ product :{
+ type :String,
+ enum :['Coffee', 'Tea']
+}
+
 
 #### 11 minLength,  maxlength 
 
    maxlength: 20 //min string and max string
+    maxlength:[20,"must 20 carector"]
+   
 
 date :
 
@@ -176,12 +185,20 @@ date :
      author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
       },
+
+      supplier:{
+       type:mongoose.Schema.Types.ObjectId,
+        ref:"Supplier"
+     }
+
 
 13.Date
 
     date: { type: Date, default: Date.now }
+
+14.unique: true/ false
+15.timestamps: true
 
 
 
