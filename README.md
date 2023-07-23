@@ -15,12 +15,50 @@
         votes: Number,
         favs: Number
       },
-      email: String
+      fist_name: {
+    type: String,
+    required: true,
+    minLength: 5,
+    maxLength: 15,
+  },
+  
+      email: {
+        type: String,
+        required: true,
+        match:[ /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,"Email not matched."]
+         
+      },
+      gender: {
+        type: String,
+        enum: {
+          values: ["male", "female"],
+          message: "{VALUE} must be male/female",
+        },
+      },
+      color: {
+        type: String,
+        required: true,
+      },
+      city: {
+        type: String,
+        required: true,
+      },
+      job_title: {
+        type: String,
+        required: true,
+      },
+    
+      airport: {
+        type: String,
+        required: true,
+      },
     });
     
     const home =  mongoose.model('Blog', homeSchema);
     
      module.exports.homeSchemaValue = home
+
+
 
 
 type of schema : 
@@ -85,6 +123,8 @@ type of schema :
 ####  8.trim
 
 #### 9.match: /^[a-zA-Z0-9_-]{3,20}$/
+
+match:[/^[a-zA-Z0-9_-]{3,20}$/,"Email not matched."]
 example 
 
         email: {
