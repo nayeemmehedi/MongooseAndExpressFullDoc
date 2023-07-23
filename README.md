@@ -139,6 +139,10 @@ date :
         required: true,
       },
 
+13.Date
+
+    date: { type: Date, default: Date.now }
+
 
 
     
