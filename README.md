@@ -3,7 +3,8 @@
      const value = await homeSchemaValue.find({gender: {$in:["male","female"] }});
       res.send(value);
    ...............
-    $eq -
+   
+    $eq 
     $ne
     
     $gt
