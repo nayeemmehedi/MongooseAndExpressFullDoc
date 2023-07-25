@@ -1,6 +1,8 @@
 ### Mongodb operator
 
-
+     const value = await homeSchemaValue.find({gender: {$in:["male","female"] }});
+      res.send(value);
+   ...............
     $eq -
     $ne
     
@@ -12,9 +14,12 @@
     
     $lt
     $lte
-    
+    ........
     $and
-    $or'
+    $or
     $nor
     $not
+
+
+
 
