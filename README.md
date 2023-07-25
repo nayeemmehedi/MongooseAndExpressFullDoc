@@ -1,35 +1,34 @@
-### Doc start here : 
 
-install :
-    npm init -y
-    npm install express cors nodemon 
+  ## jodi amra kichu bad deye baki sob dekhaite chai
+  
+      const value = await homeSchemaValue.find({},"-first_name")
 
-starting code :
+## jodi amra exctly kichu jnis dkhyte chai
 
-                  const express = require("express");
-                  const cors = require("cors");
-                  const mongoose = require("mongoose");
-                 
-                 
+       const value = await homeSchemaValue.find({},"first_name")
 
+## limit - jodi use kri 1 dele 1 ta asbe
 
-                  const app = express();
-                  app.use(cors());
-                  app.use(express.json());
-                
+     const value = await homeSchemaValue.find({}).limit(1)
 
+## sort - jodi use kri 
 
-                  mongoose.set("strictQuery", true);
+   desc - niche thke upor
+   asc - upor thke niche, choto thke boro
 
-                  mongoose
-                    .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                    .then(() => console.log("db conntected.."));
+     const value = await homeSchemaValue.find({}).sort({quentity:-1})
+
+## select - jodi use kri 1 dele 1 ta asbe
+
+     const value = await homeSchemaValue.find({}).limit(1)
 
 
+## where 
 
-               app.get('/', (req, res) => {
-                res.send('Hello World!')
-              })
+  const value = await homeSchemaValue.where("name").equals("chals").where("quntity").gt(20)
 
-              
-     app.listen(3000);
+
+
+
+
+
