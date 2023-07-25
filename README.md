@@ -1,35 +1,10 @@
-### Doc start here : 
+schema.pre('save', () => console.log('Hello from pre save'));
 
-install :
-    npm init -y
-    npm install express cors nodemon 
+schema.post('save', function(doc) {
+  console.log('%s has been saved', doc._id);
+});
 
-starting code :
-
-                  const express = require("express");
-                  const cors = require("cors");
-                  const mongoose = require("mongoose");
-                 
-                 
-
-
-                  const app = express();
-                  app.use(cors());
-                  app.use(express.json());
-                
-
-
-                  mongoose.set("strictQuery", true);
-
-                  mongoose
-                    .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                    .then(() => console.log("db conntected.."));
-
-
-
-               app.get('/', (req, res) => {
-                res.send('Hello World!')
-              })
-
-              
-     app.listen(3000);
+userSchema.pre('save', function() {
+  console.log(this.name); // { name: 'John' }
+  console.log(this.age); // { age: 30 }
+});
