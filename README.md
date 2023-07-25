@@ -16,6 +16,8 @@
     $lt
     $lte
     ........
+### logic
+    
     $and
     $or
     $nor
