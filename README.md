@@ -1,35 +1,23 @@
-### Doc start here : 
+### router doc
 
-install :
-    npm init -y
-    npm install express cors nodemon 
-
-starting code :
-
-                  const express = require("express");
-                  const cors = require("cors");
-                  const mongoose = require("mongoose");
-                 
-                 
-
-
-                  const app = express();
-                  app.use(cors());
-                  app.use(express.json());
-                
-
-
-                  mongoose.set("strictQuery", true);
-
-                  mongoose
-                    .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                    .then(() => console.log("db conntected.."));
-
-
-
-               app.get('/', (req, res) => {
-                res.send('Hello World!')
-              })
-
-              
-     app.listen(3000);
+        const express = require("express");
+        const {
+          Home,
+          HomePost,
+          HomePatch,
+          HomeDelete,
+          HomeBulkupdateAll,
+          HomeBulkupdateDiffernt,
+        } = require("../controller/home.controller");
+        
+        const routesHome = express.Router();
+        
+        routesHome.route("/").get(Home).post(HomePost);
+        
+        routesHome.patch("/bulkupdateAll", HomeBulkupdateAll);
+        routesHome.patch("/bulkupdateDiffernt", HomeBulkupdateDiffernt);
+        
+        routesHome.patch("/:id", HomePatch);
+        routesHome.delete("/:id", HomeDelete);
+        
+        module.exports = routesHome;
