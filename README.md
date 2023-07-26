@@ -62,6 +62,78 @@
         };
 
 
+   ### patch specific id but price same those product product
+  
+      module.exports.HomeBulkupdateAll = async (req, res) => {
+        try {
+          const user = await homeSchemaValue.updateMany(
+            { _id: req.body.ids },
+            req.body.data,
+            { runValidators: true }
+          );
+          if (!user) {
+            return res.status(404).json({ message: "User not found" });
+          }
+          res.json("done");
+        } catch (err) {
+          res.status(500).json({ error: err.message });
+        }
+      
+        //
+        // this way give input
+        //  {
+        //     "ids" : [
+        //         "64bd0ce83713d887d24d7b7b",
+        //         "64bd0ce83713d887d24d7b7c"
+        //     ],
+        //     "data":{
+        //         "city":"dhaka"
+      
+        //     }
+        // }
+      };
+
+//product update many item and differnet price
+
+      module.exports.HomeBulkupdateDiffernt = async (req, res) => {
+        try {
+          const products = [];
+
+             req.body.ids.forEach((prod) => {
+               products.push(homeSchemaValue.updateOne({ _id: prod.id }, prod.data));
+             });
+         
+             const user = await Promise.all(products);
+         
+             if (!user) {
+               return res.status(404).json({ message: "User not found" });
+             }
+             res.json("done");
+     } catch (err) {
+       res.status(500).json({ error: err.message });
+     }
+
+     // {
+     //   "ids": [
+     //       {
+     //           "id": "64bd0ce83713d887d24d7b7b",
+     //           "data": {
+     //               "city": "dhaka"
+     //           }
+   
+     //       },
+     //           {
+     //               "id": "64bd0ce83713d887d24d7b7c",
+     //               "data": {
+     //                   "city": "khulna"
+     //               }
+     //           }
+     //       ]
+     //   }
+   };
+   
+
+
 ### router 
 
     const express = require("express");
