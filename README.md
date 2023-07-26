@@ -141,10 +141,10 @@ example
           },
 #### 10.  enum:
 1way:
-     {
-      values: ['Coffee', 'Tea'],
-      message: '{VALUE} is not supported'
-    }
+     enum: {
+        values: ["male", "female"],
+        message: "{VALUE} must be male/female",
+      },
 
 2way:
  product :{
