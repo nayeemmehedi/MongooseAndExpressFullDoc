@@ -6,30 +6,27 @@ install :
 
 starting code :
 
-                  const express = require("express");
-                  const cors = require("cors");
-                  const mongoose = require("mongoose");
-                 
-                 
-
-
-                  const app = express();
-                  app.use(cors());
-                  app.use(express.json());
-                
-
-
-                  mongoose.set("strictQuery", true);
-
-                  mongoose
-                    .connect(process.env.DATABASE_FILE || "mongodb://localhost:27017/mongoose1st")
-                    .then(() => console.log("db conntected.."));
-
-
-
-               app.get('/', (req, res) => {
-                res.send('Hello World!')
-              })
-
-              
-     app.listen(3000);
+        const express = require("express");
+        const cors = require("cors");
+        const mongoose = require("mongoose");
+        const app = express();
+        
+        app.use(express.urlencoded({ extended: true }));
+        app.use(express.json());
+        app.use(cors());
+        
+        
+        mongoose.set("strictQuery", true);
+        
+        mongoose
+          .connect(
+            process.env.DATABASE_FILE || "mongodb://0.0.0.0:27017/express1stLearn"
+          )
+          .then(() => console.log("db conntected..")
+          );
+        
+          app.get('/', (req, res) => {
+            res.send('Hello World!')
+          })
+        
+        app.listen(4000);
