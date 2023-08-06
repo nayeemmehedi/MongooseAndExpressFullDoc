@@ -1,8 +1,9 @@
 ### Doc start here : 
 
 install :
-    npm init -y
-    npm install express cors nodemon 
+
+            npm init -y
+            npm install express cors nodemon mongoose
 
 starting code :
 
