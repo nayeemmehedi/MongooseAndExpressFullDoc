@@ -202,6 +202,68 @@ date :
 
 
 
+# Importent example 
+
+
+        const mongoose = require("mongoose");
+        const { Schema } = mongoose;
+        var validator = require("validator");
+        
+        const signUpSchema = new Schema({
+          name: {
+            type: String,
+            minLength: 4,
+            maxLength: 20,
+            required: true,
+          },
+        
+          email: {
+            type: String,
+            validate: [validator.isEmail, "Please enter a valid email"],
+            required: true,
+          },
+        
+          password: {
+            type: String,
+            // validate: {
+            //   validator: (value) =>
+            //     validator.isStrongPassword(value, {
+            //       minLength: 6,
+            //       minLowercase: 1,
+            //       minNumber: 1,
+            //       minUppercase: 1,
+            //       minSymbols: 1,
+            //     }),
+            //   message: "Password {VALUE} is not Strong.",
+            // },
+            required: true,
+          },
+          confirmPassword: {
+            type: String,
+            // required: true,
+            validate: {
+              validator: function (value) {
+                return value === this.password;
+              },
+              message: "Password dont match",
+            },
+          },
+          imgUrl: {
+            type: String,
+            validate: [validator.isURL, "Please provide img url"],
+          },
+          status :{
+            type : String,
+            default : "buyer",
+            enum:["buyer","sell-team","admin"]
+          }
+        });
+        
+        module.exports.signUP = mongoose.model('signUp', signUpSchema);
+        
+        
+        
+
     
 
 
