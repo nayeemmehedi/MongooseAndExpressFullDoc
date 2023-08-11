@@ -1,66 +1,5 @@
 ### schema doc 
 
-### basic example
-
-    const mongoose = require('mongoose');
-    
-    const { Schema } = mongoose;
-    
-    const homeSchema = new Schema({
-      fist_name: String, 
-      comments: [{ body: String, date: Date }],
-      date: { type: Date, default: Date.now },
-      hidden: Boolean,
-      meta: {
-        votes: Number,
-        favs: Number
-      },
-      fist_name: {
-    type: String,
-    required: true,
-    minLength: 5,
-    maxLength: 15,
-  },
-  
-      email: {
-        type: String,
-        required: true,
-        match:[ /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,"Email not matched."]
-         
-      },
-      gender: {
-        type: String,
-        enum: {
-          values: ["male", "female"],
-          message: "{VALUE} must be male/female",
-        },
-      },
-      color: {
-        type: String,
-        required: true,
-      },
-      city: {
-        type: String,
-        required: true,
-      },
-      job_title: {
-        type: String,
-        required: true,
-      },
-    
-      airport: {
-        type: String,
-        required: true,
-      },
-    });
-    
-    const home =  mongoose.model('Blog', homeSchema);
-    
-     module.exports.homeSchemaValue = home
-
-
-
-
 type of schema : 
 
     String
@@ -94,6 +33,31 @@ type of schema :
         type: [String],
         required: true
       }
+
+## object of object 
+
+     subBalance: {
+        name: {
+          type: String,
+          required: true
+        },
+        description: {
+          type: String,
+          required: true
+        }
+      },
+
+##  array of object 
+
+    activities:[
+        {
+            homeTown:{
+                type: String,
+            },
+            age : Number
+
+        }
+    ]
 
 2 required 
 
@@ -207,6 +171,72 @@ date :
 
 14.unique: true/ false
 15.timestamps: true
+
+
+/////////////////////////////////////
+/////////////////////////////////////
+////////////////////////////////////
+
+
+## basic example 
+
+ ### basic example
+
+    const mongoose = require('mongoose');
+    
+    const { Schema } = mongoose;
+    
+    const homeSchema = new Schema({
+      fist_name: String, 
+      comments: [{ body: String, date: Date }],
+      date: { type: Date, default: Date.now },
+      hidden: Boolean,
+      meta: {
+        votes: Number,
+        favs: Number
+      },
+      fist_name: {
+    type: String,
+    required: true,
+    minLength: 5,
+    maxLength: 15,
+  },
+  
+      email: {
+        type: String,
+        required: true,
+        match:[ /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,"Email not matched."]
+         
+      },
+      gender: {
+        type: String,
+        enum: {
+          values: ["male", "female"],
+          message: "{VALUE} must be male/female",
+        },
+      },
+      color: {
+        type: String,
+        required: true,
+      },
+      city: {
+        type: String,
+        required: true,
+      },
+      job_title: {
+        type: String,
+        required: true,
+      },
+    
+      airport: {
+        type: String,
+        required: true,
+      },
+    });
+    
+    const home =  mongoose.model('Blog', homeSchema);
+    
+     module.exports.homeSchemaValue = home
 
 
 
