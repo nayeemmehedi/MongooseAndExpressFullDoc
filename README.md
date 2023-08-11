@@ -87,6 +87,14 @@ type of schema :
         lastName: { type: String }
       }
 
+
+ ## array of string :
+
+     items: {
+        type: [String],
+        required: true
+      }
+
 2 required 
 
 **.All SchemaTypes have the built-in required validator. The required validator uses the SchemaType's checkRequired() function to determine if the value satisfies the required validator.
