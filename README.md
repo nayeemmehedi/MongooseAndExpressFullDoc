@@ -47,6 +47,34 @@
            }
          };
 
+
+### post / populate 
+
+module.exports.postProduct2 = async (req, res) => {
+  try {
+    const getValue = new product2(req.body);
+
+    const value = await getValue.save();
+
+    const getProduct = await product2.find({ name: getValue.name });
+
+    const updateValue = await store2.updateOne(
+      { name: getProduct[0].category },
+      { $push: { product: getProduct[0]._id } }
+    );
+
+    res.send({
+      status: "success",
+      value: updateValue,
+    });
+  } catch (error) {
+    res.send({
+      status: "failed",
+      message: error.message,
+    });
+  }
+};
+
          
  ### patch req
         
