@@ -25,7 +25,29 @@
             res.status(500).json({ error: error.message });
           }
         };
+
+
+###POST ALL
+
         
+     module.exports.postAllStore2 = async (req, res) => {
+           try {
+             // const value = ProductServiecPost(req, res);
+             const value = await SchemaProduct.insertMany(req.body);
+         
+             res.json({
+               status: "success",
+               data: value,
+             });
+           } catch (err) {
+             res.json({
+               status: "error",
+               message: err.message,
+             });
+           }
+         };
+
+         
  ### patch req
         
         module.exports.HomePatch = async (req, res) => {
