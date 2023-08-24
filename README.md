@@ -50,9 +50,19 @@
 
 ### post / populate 
 
-module.exports.postProduct2 = async (req, res) => {
-  try {
-    const getValue = new product2(req.body);
+ #### value got
+
+       const getValue = await store2.find().populate("product")
+
+ 
+
+  #### value create
+
+
+
+    module.exports.postProduct2 = async (req, res) => {
+        try {
+          const getValue = new product2(req.body);
 
     const value = await getValue.save();
 
@@ -67,13 +77,13 @@ module.exports.postProduct2 = async (req, res) => {
       status: "success",
       value: updateValue,
     });
-  } catch (error) {
-    res.send({
-      status: "failed",
-      message: error.message,
-    });
-  }
-};
+     } catch (error) {
+       res.send({
+         status: "failed",
+         message: error.message,
+       });
+     }
+   };
 
          
  ### patch req
