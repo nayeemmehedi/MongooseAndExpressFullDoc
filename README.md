@@ -1,35 +1,39 @@
-### Doc start here : 
-
-install :
-
-            npm init -y
-            npm install express cors nodemon mongoose
-            npm i dotenv
-
-starting code :
-
-        const express = require("express");
-        const cors = require("cors");
-        const mongoose = require("mongoose");
-        require('dotenv').config()
-        const app = express();
-        
-        app.use(express.urlencoded({ extended: true }));
-        app.use(express.json());
-        app.use(cors());
-        
-        
-        mongoose.set("strictQuery", true);
-        
-        mongoose
-          .connect(
-            process.env.DATABASE_FILE || "mongodb://0.0.0.0:27017/express1stLearn"
-          )
-          .then(() => console.log("db conntected..")
-          );
-        
-          app.get('/', (req, res) => {
-            res.send('Hello World!')
-          })
-        
-        app.listen(4000);
+            const {
+              companyJobPost,
+            } = require("../../models/company.model/Jobpost.company..model");
+            
+            module.exports.allJob = async (req, res, next) => {
+              try {
+                if (req.query.page) {
+                  const { page = 1, limit = 10 } = req.query;
+            
+                  const skip = (page - 1) * parseInt(limit);
+            
+                  const allJob = await companyJobPost
+                    .find({})
+                    .skip(skip)
+                    .limit(parseInt(limit));
+            
+                  const totalJob = await companyJobPost.countDocuments();
+            
+                  res.send({
+                    message: "success",
+                    totalJob: totalJob,
+                    value: allJob,
+                  });
+                } else {
+                  const allJob = await companyJobPost.find({});
+                  const totalJob = await companyJobPost.countDocuments();
+                  res.send({
+                    message: "success",
+                    totalJob: totalJob,
+                    value: allJob,
+                  });
+                }
+              } catch (error) {
+                res.send({
+                  message: error.message,
+                  error: error,
+                });
+              }
+            };
