@@ -1,35 +1,32 @@
-### Doc start here : 
+## handle module 
 
-install :
 
-            npm init -y
-            npm install express cors nodemon mongoose
-            npm i dotenv
+                        module.exports = nameBig
+                        
+                        const nameBig = require("./filename.js")
 
-starting code :
 
-        const express = require("express");
-        const cors = require("cors");
-        const mongoose = require("mongoose");
-        require('dotenv').config()
-        const app = express();
-        
-        app.use(express.urlencoded({ extended: true }));
-        app.use(express.json());
-        app.use(cors());
-        
-        
-        mongoose.set("strictQuery", true);
-        
-        mongoose
-          .connect(
-            process.env.DATABASE_FILE || "mongodb://0.0.0.0:27017/express1stLearn"
-          )
-          .then(() => console.log("db conntected..")
-          );
-        
-          app.get('/', (req, res) => {
-            res.send('Hello World!')
-          })
-        
-        app.listen(4000);
+2nd way : 
+
+            module.exports.name1 = name1
+            module.exports.name2 = name2
+            
+            
+             const {name1, name2}= require("./filename.js")
+
+3rd way:
+
+           module.exports ={nam1,name2}
+           
+            
+            
+             const {name1, name2}= require("./filename.js")
+
+
+4th way : 
+
+
+     module.exports.name1 =function name(){}
+
+      const {name1}= require("./filename.js")
+
