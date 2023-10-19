@@ -1,35 +1,51 @@
-### Doc start here : 
+### indexing
 
-install :
+            const mongoose = require('mongoose');
+            
+            const userSchema = new mongoose.Schema({
+                username: {
+                    type: String,
+                    required: true,
+                    unique: true, // This creates a unique index
+                },
+                email: {
+                    type: String,
+                    required: true,
+                },
+                age: {
+                    type: Number,
+                },
+            });
+            
+// Define indexes
 
-            npm init -y
-            npm install express cors nodemon mongoose
-            npm i dotenv
+            userSchema.index({ email: 1 }); // Ascending index on the 'email' field
+            userSchema.index({ age: -1 });  // Descending index on the 'age' field
+            
+            const User = mongoose.model('User', userSchema);
+            
+            module.exports = User;
 
-starting code :
 
-        const express = require("express");
-        const cors = require("cors");
-        const mongoose = require("mongoose");
-        require('dotenv').config()
-        const app = express();
-        
-        app.use(express.urlencoded({ extended: true }));
-        app.use(express.json());
-        app.use(cors());
-        
-        
-        mongoose.set("strictQuery", true);
-        
-        mongoose
-          .connect(
-            process.env.DATABASE_FILE || "mongodb://0.0.0.0:27017/express1stLearn"
-          )
-          .then(() => console.log("db conntected..")
-          );
-        
-          app.get('/', (req, res) => {
-            res.send('Hello World!')
-          })
-        
-        app.listen(4000);
+
+Checking Indexes:
+
+            db.collectionName.getIndexes()
+            
+drop index :
+            
+            const mongoose = require('mongoose');
+            const User = require('./userModel'); // Import your Mongoose model
+            
+            mongoose.connect('mongodb://localhost/your_database', { useNewUrlParser: true, useUnifiedTopology: true });
+            
+            const indexName = 'your_index_name'; // Replace with the name of the index you want to drop
+            
+            User.collection.dropIndex(indexName, (error, result) => {
+                if (error) {
+                    console.error(`Error dropping index ${indexName}:`, error);
+                } else {
+                    console.log(`Index ${indexName} dropped successfully.`);
+                }
+                mongoose.connection.close(); // Close the MongoDB connection
+            });
