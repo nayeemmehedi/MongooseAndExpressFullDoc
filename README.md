@@ -1,4 +1,3 @@
-
   ## jodi amra kichu bad deye baki sob dekhaite chai
   
       const value = await homeSchemaValue.find({},"-first_name")
