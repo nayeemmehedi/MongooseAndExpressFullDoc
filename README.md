@@ -1,35 +1,38 @@
-### Doc start here : 
+status code :
+.............
 
-install :
+## Successful responses
 
-            npm init -y
-            npm install express cors nodemon mongoose
-            npm i dotenv
+200 OK
 
-starting code :
 
-        const express = require("express");
-        const cors = require("cors");
-        const mongoose = require("mongoose");
-        require('dotenv').config()
-        const app = express();
-        
-        app.use(express.urlencoded({ extended: true }));
-        app.use(express.json());
-        app.use(cors());
-        
-        
-        mongoose.set("strictQuery", true);
-        
-        mongoose
-          .connect(
-            process.env.DATABASE_FILE || "mongodb://0.0.0.0:27017/express1stLearn"
-          )
-          .then(() => console.log("db conntected..")
-          );
-        
-          app.get('/', (req, res) => {
-            res.send('Hello World!')
-          })
-        
-        app.listen(4000);
+201 Created
+
+            The request succeeded, and a new resource was created as a result. This is typically the response sent after POST requests, or some PUT requests.
+
+
+## Client error responses
+
+400 Bad Request
+
+            The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing
+
+
+401 Unauthorized
+
+
+403 Forbidden
+
+    The client does not have access rights to the content; that is, it is unauthorized,
+
+404 Not Found
+
+     The server cannot find the requested resource.
+
+
+
+# Server error responses
+
+500 Internal Server Error
+
+            This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response.
