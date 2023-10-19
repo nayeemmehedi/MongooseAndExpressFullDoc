@@ -1,35 +1,39 @@
-### Doc start here : 
+## How to need data 
 
-install :
+## limit() -> 2 ta value dekhbe only
 
-            npm init -y
-            npm install express cors nodemon mongoose
-            npm i dotenv
+            db.collection.find({}).limit(2) 
 
-starting code :
+## skip(3) -> mane first 3 ta skip krbe
 
-        const express = require("express");
-        const cors = require("cors");
-        const mongoose = require("mongoose");
-        require('dotenv').config()
-        const app = express();
-        
-        app.use(express.urlencoded({ extended: true }));
-        app.use(express.json());
-        app.use(cors());
-        
-        
-        mongoose.set("strictQuery", true);
-        
-        mongoose
-          .connect(
-            process.env.DATABASE_FILE || "mongodb://0.0.0.0:27017/express1stLearn"
-          )
-          .then(() => console.log("db conntected..")
-          );
-        
-          app.get('/', (req, res) => {
-            res.send('Hello World!')
-          })
-        
-        app.listen(4000);
+           db.collection.find({}).skip(3).limit(3)
+
+## sort -? boro thke choto ,choto thke boro
+
+          db.collection.find({}).sort({age : -1}) -> boro thke choto akare 
+
+## projection -> mane doc r vtr name,age , phone ase ami age chai na thle kmne hbe
+
+             db.collection.find({}).projection({age : 0})  0 mane bad ,1 mane lgbe ..
+
+## object r property
+
+{subrance : { city :"dhaka"}} jodi amn object thke 
+
+    db.collection.find({"subbrance.city":"dhaka"}).
+
+
+## array of object :  activities: [ { city:"dhaka"}]
+
+     db.collection.find({"activities.city":"dhaka"}).
+
+ 
+
+
+
+             
+
+
+
+
+
