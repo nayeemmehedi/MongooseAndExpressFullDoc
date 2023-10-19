@@ -1,35 +1,16 @@
-### Doc start here : 
+## There are 5 type of middleware 
 
-install :
+            Application-level middleware
+            Router-level middleware
+            Error-handling middleware
+            Built-in middleware
+            Third-party middleware
 
-            npm init -y
-            npm install express cors nodemon mongoose
-            npm i dotenv
 
-starting code :
+## Application-level middleware : 
 
-        const express = require("express");
-        const cors = require("cors");
-        const mongoose = require("mongoose");
-        require('dotenv').config()
-        const app = express();
-        
-        app.use(express.urlencoded({ extended: true }));
-        app.use(express.json());
-        app.use(cors());
-        
-        
-        mongoose.set("strictQuery", true);
-        
-        mongoose
-          .connect(
-            process.env.DATABASE_FILE || "mongodb://0.0.0.0:27017/express1stLearn"
-          )
-          .then(() => console.log("db conntected..")
-          );
-        
-          app.get('/', (req, res) => {
-            res.send('Hello World!')
-          })
-        
-        app.listen(4000);
+normaly app.use r vtr use hbe
+
+jekono jaigai function banai req,res,next krlei middlware function hy..
+
+ Router-level middleware :
