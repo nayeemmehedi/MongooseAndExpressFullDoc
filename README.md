@@ -27,6 +27,46 @@
 
      db.collection.find({"activities.city":"dhaka"}).
 
+
+# mongoose query :
+
+
+
+
+## arrgiagtion most used 
+
+$match: Filters documents based on specified criteria, similar to the find method.
+
+$group: Groups documents by a specified key and performs various operations on the grouped data, such as calculating counts, sums, averages, etc.
+
+$project: Shapes the documents in the pipeline, specifying which fields to include or exclude, and renaming fields.
+
+$sort: Sorts the documents in the pipeline based on specified fields and order.
+
+$limit: Limits the number of documents that pass through the pipeline.
+
+$skip: Skips a specified number of documents in the pipeline.
+
+$unwind: Deconstructs an array field from input documents, creating one document for each element in the array.
+
+$lookup: Performs a left outer join with another collection, adding fields from the joined collection to the input documents.
+
+$addFields: Adds new fields to documents, typically calculated or derived from existing fields.
+
+$out: Writes the results of the aggregation to a new collection.
+
+$facet: Allows you to perform multiple separate aggregations in a single stage, providing multiple sets of results.
+
+$sample: Randomly selects a specified number of documents from the pipeline.
+
+$redact: Implements data access control and restricts the fields returned based on certain rules.
+
+$bucket: Categorizes documents into groups or buckets based on a specified expression and boundaries.
+
+$bucketAuto: Automatically categorizes documents into buckets with evenly distributed boundaries.
+
+$merge: Writes the results of the aggregation to a new or existing collection, similar to $out, but allows more flexibility.
+
  
 
 
