@@ -1,5 +1,12 @@
 ### schema doc 
 
+
+// Define a User schema with dynamic nested objects
+const userSchema = new Schema({
+  username: { type: String, required: true, unique: true },
+  profile: Schema.Types.Mixed, // This allows for any nested structure
+});
+
 type of schema : 
 
     String
